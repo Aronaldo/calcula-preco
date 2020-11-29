@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calcular preços</title>
+    <style>
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        form input,
+        form button {
+            margin: 0 auto;
+            width: 100%;
+            height: 30px;
+            padding: 5px;
+        }
+        
+        #resultado {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 20px;
+            font-family: Verdana, sans-serif;
+            font-size: 18px;
+            ;
+            padding: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Elabore um programa para cálculo de preços de produtos que solicite o preço de compra do produto e o percentual a ser aplicado em cima desse valor para a venda. Calcule e exiba o preço de venda do produto. Se o percentual a ser aplicado for inferior a 50%, exiba uma mensagem informando ao usuário que o produto será vendido com uma margem muito pequena de lucro.
+    </p>
+
+    <form action="">
+        <input type="number" id="precoCompra" placeholder="Valor do produto">
+        <input type="number" id="percentual" placeholder="Percentual de venda">
+        <button onclick="calcular()">Calcular</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcular() {
+            event.preventDefault();
+            //entrada
+            let precoCompra = parseFloat(document.getElementById('precoCompra').value);
+            let percentual = parseFloat(document.getElementById('percentual').value);
+
+            let mensagem; //undefined 
+           
+
+            //processamento
+            let precoVenda = precoCompra + (precoCompra / 100) * percentual;
+
+            mensagem = "Preço de venda do produto: R$ " + precoVenda.toFixed(2);
+           
+if(percentual < 50) {
+    mensagem += "<p> Margem muito pequena! </p>";
+}
+
+            //saída
+            document.getElementById('resultado').innerHTML = mensagem;
+            console.log(precoVenda);
+        } //FIM DA FUNÇÃO CALCULAR
+    </script>
+</body>
+
+</html>
